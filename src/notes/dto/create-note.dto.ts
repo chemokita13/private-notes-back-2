@@ -6,5 +6,5 @@ export class CreateNoteDto {
   @ApiProperty()
   content: string;
   @ApiProperty()
-  userId: number;
+  authorId: number;
 }
