@@ -3,17 +3,17 @@ import { HydratedDocument } from 'mongoose';
 
 export type NoteDoc = HydratedDocument<Note>;
 
-@Schema()
+@Schema({ versionKey: false })
 export class Note {
-  @Prop()
-  _id: string;
-  @Prop()
+  // @Prop()
+  // _id?: string;
+  @Prop({ required: true })
   title: string;
 
-  @Prop()
+  @Prop({ required: true })
   content: string;
 
-  @Prop()
+  @Prop({ required: true })
   authorId: string;
 }
 
