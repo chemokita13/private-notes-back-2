@@ -5,6 +5,6 @@ export class UserDto {
   username: string;
   @ApiProperty()
   password: string;
-  // @ApiProperty({ required: false })
-  // id?: number;
+  @ApiProperty({ required: false })
+  id?: number;
 }
