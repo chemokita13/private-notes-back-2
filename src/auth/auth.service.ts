@@ -11,7 +11,6 @@ export class AuthService {
   ) {}
 
   async login(userToLog: UserDto) {
-    // todo: validar previamente el usuario
     const userValid = await this.usersService.validateUser(userToLog);
     if (!userValid || !userValid.valid)
       throw new HttpException('USER_NOT_FOUND_OR_NOT_VALID', 404);
