@@ -7,11 +7,13 @@ import {
   Delete,
   UseGuards,
   Put,
+  Req,
 } from '@nestjs/common';
 import { NotesService } from './notes.service';
 import { NoteDto } from './dto/noteDto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Request } from 'express';
 
 @ApiBearerAuth()
 @ApiTags('notes')
@@ -26,7 +28,8 @@ export class NotesController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Req() req: Request) {
+    console.log(req.headers.authorization.split(' ')[1]);
     return this.notesService.findAll();
   }
 
