@@ -1,15 +1,15 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { CreateNoteDto } from './dto/create-note.dto';
-import { UpdateNoteDto } from './dto/update-note.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Note } from './note.schema';
+import { NoteDto } from './dto/noteDto';
 
 @Injectable()
 export class NotesService {
   constructor(@InjectModel('Note') private noteModel: Model<Note>) {}
 
-  async create(createNote: CreateNoteDto): Promise<Note> {
+  async create(createNote: NoteDto): Promise<Note> {
+    //TODO: poner los userID de cada uno, y que el token jwt codifique el userID no el nombre (agregar prev mongodb brypt y eso)
     try {
       const newNote = await new this.noteModel(createNote).save();
       return newNote;
@@ -45,7 +45,7 @@ export class NotesService {
     }
   }
 
-  async update(id: string, updateNote: UpdateNoteDto): Promise<Note> {
+  async update(id: string, updateNote: NoteDto): Promise<Note> {
     try {
       return await this.noteModel.findOneAndUpdate({ id: id }, updateNote, {
         new: true,

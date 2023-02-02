@@ -9,8 +9,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { NotesService } from './notes.service';
-import { CreateNoteDto } from './dto/create-note.dto';
-import { UpdateNoteDto } from './dto/update-note.dto';
+import { NoteDto } from './dto/noteDto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
@@ -22,7 +21,7 @@ export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
   @Post()
-  create(@Body() createNoteDto: CreateNoteDto) {
+  create(@Body() createNoteDto: NoteDto) {
     return this.notesService.create(createNoteDto);
   }
 
@@ -37,8 +36,8 @@ export class NotesController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateNoteDto: UpdateNoteDto) {
-    return this.notesService.update(id, updateNoteDto);
+  update(@Param('id') id: string, @Body() updateNote: NoteDto) {
+    return this.notesService.update(id, updateNote);
   }
 
   @Delete(':id')
