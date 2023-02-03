@@ -23,28 +23,36 @@ export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
   @Post()
-  create(@Body() createNoteDto: NoteDto) {
-    return this.notesService.create(createNoteDto);
+  create(@Body() createNoteDto: NoteDto, @Req() req: Request) {
+    const token = req.headers.authorization.split(' ')[1]; // get the token
+    return this.notesService.create(createNoteDto, token);
   }
 
   @Get()
   findAll(@Req() req: Request) {
-    console.log(req.headers.authorization.split(' ')[1]);
-    return this.notesService.findAll();
+    const token = req.headers.authorization.split(' ')[1]; // get the token
+    return this.notesService.findAll(token);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.notesService.findOne(id);
+  findOne(@Param('id') id: string, @Req() req: Request) {
+    const token = req.headers.authorization.split(' ')[1]; // get the token
+    return this.notesService.findOne(id, token);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateNote: NoteDto) {
-    return this.notesService.update(id, updateNote);
+  update(
+    @Param('id') id: string,
+    @Body() updateNote: NoteDto,
+    @Req() req: Request,
+  ) {
+    const token = req.headers.authorization.split(' ')[1]; // get the token
+    return this.notesService.update(id, updateNote, token);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.notesService.remove(id);
+  remove(@Param('id') id: string, @Req() req: Request) {
+    const token = req.headers.authorization.split(' ')[1]; // get the token
+    return this.notesService.remove(id, token);
   }
 }
