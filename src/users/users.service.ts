@@ -8,19 +8,6 @@ import { AuthService } from 'src/auth/auth.service';
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
-
   private readonly BcryptSalt = process.env.BCRYPTSALT || 5;
 
   constructor(
