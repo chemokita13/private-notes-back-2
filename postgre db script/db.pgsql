@@ -1,7 +1,7 @@
 CREATE DATABASE users;
-\c users
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
+
+\c users -- CREATE TABLE users (
+--     id SERIAL PRIMARY KEY,
+--     username VARCHAR(255) NOT NULL,
+--     password VARCHAR(255) NOT NULL
+-- );
