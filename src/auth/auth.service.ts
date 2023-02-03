@@ -24,8 +24,9 @@ export class AuthService {
   async getIdFromToken(token: string) {
     const tokenData = this.jwtService.decode(token);
     if (!tokenData || typeof tokenData == 'string') return null;
-
-    return tokenData.id;
+    const user = await this.usersService.findOne(tokenData.id);
+    if (tokenData.username === user.username) return tokenData.id;
+    return null; // if nothing happens
   }
 }
 
