@@ -46,7 +46,7 @@ export class NotesService {
     try {
       const authorID = await this.authService.getIdFromToken(token);
       //return await this.noteModel.findById<Note>(id); // WHY THAT IS NOT WORKING!?
-      return await this.noteModel.findOne({ id: id, authorId: authorID }); //? AND THAT YES?
+      return await this.noteModel.findOne({ _id: id, authorId: authorID }); //? AND THAT YES?
     } catch (error) {
       throw new HttpException(
         { message: 'Something went wrong', error: error },
@@ -63,7 +63,7 @@ export class NotesService {
         content: updateNote.content,
       }; // to ONLY save title and content and no things like _id or authorID
       return await this.noteModel.findOneAndUpdate(
-        { id: id, authorId: authorID },
+        { _id: id, authorId: authorID },
         noteToUpdate,
         {
           new: true,
@@ -81,7 +81,7 @@ export class NotesService {
     try {
       const authorID = await this.authService.getIdFromToken(token);
       return await this.noteModel.findOneAndDelete({
-        id: id,
+        _id: id,
         authorId: authorID,
       });
     } catch (error) {
