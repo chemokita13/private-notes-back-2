@@ -1,7 +1,7 @@
 {
     "version": 2,
     "env": {
-        "MONGODBURI": "@MONGODBURI",
+        "MONGODBURI": "@MONGODBURI", 
         "PGUSER":"@PGUSER",
         "PGHOST":"@PGHOST",
         "PGPORT":"@PGPORT",
