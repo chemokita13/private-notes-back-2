@@ -1,13 +1,5 @@
 {
     "version": 2,
-    "env": {
-        "MONGODBURI": "@MONGODBURI", 
-        "PGUSER":"@PGUSER",
-        "PGHOST":"@PGHOST",
-        "PGPORT":"@PGPORT",
-        "PGPASSWORD":"@PGPASSWORD",
-        "PGDATABASE":"@PGDATABASE"
-    },
     "builds": [
         {
             "src": "src/main.ts",
