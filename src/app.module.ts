@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
+    ConfigModule.forRoot({}),
     AuthModule,
     UsersModule,
     NotesModule,
@@ -27,7 +28,6 @@ import { ConfigModule } from '@nestjs/config'
         synchronize: true,
       }),
     }),
-    ConfigModule.forRoot({})
   ],
   controllers: [AppController],
   providers: [AppService],
