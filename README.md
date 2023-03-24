@@ -4,4 +4,4 @@
 
 ### API consumed by [that repo](https://github.com/chemokita13/priv-notes-front)
 
-(That page is deployed with fly.io and Docker)
+(That page is deployed with fly.io(proyect) and Docker, railway(postgre), mongoDBAtlas(mongoDB) )
