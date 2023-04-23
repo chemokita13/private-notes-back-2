@@ -24,6 +24,7 @@ import { ConfigModule } from '@nestjs/config'
         username: process.env.PGUSER || 'postgres',
         password: process.env.PGPASSWORD || 'root',
         database: process.env.PGDATABASE||'users',
+        ssl: true,
         entities: [User],
         synchronize: true,
       }),
